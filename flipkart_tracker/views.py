@@ -100,24 +100,19 @@ def handleSignUp(request):
         pass1 = request.POST['password']
         pass2 = request.POST['confirm password']
 
-        # check for errorneous input
-        if len(username) < 10:
-            messages.error(request, " Your user name must be under 10 characters")
-            return redirect('home')
-
         if not username.isalnum():
             messages.error(request, " User name should only contain letters and numbers")
-            return redirect('home')
+            return render(request, 'flipkart_tracker/signup.html')
 
         if (pass1 != pass2):
             messages.error(request, " Passwords do not match")
-            return redirect('home')
+            return render(request, 'flipkart_tracker/signup.html')
 
         # Create the user
         myuser = User.objects.create_user(username, email, pass1)
         myuser.save()
         messages.success(request, " Your Account has been successfully created")
-        return redirect('signup')
+        return render(request, 'flipkart_tracker/signup.html')
 
     else:
         return HttpResponse("404 - Not found")
@@ -136,7 +131,7 @@ def handeLogin(request):
             return redirect('home')
         else:
             messages.error(request, "Invalid credentials! Please try again")
-            return HttpResponse("invalid")
+            return render(request, 'flipkart_tracker/signup.html')
 
     return HttpResponse("404- Not found")
 
@@ -153,7 +148,7 @@ def delete_item(request,id):
 def handelLogout(request):
     logout(request)
     messages.success(request, "Successfully logged out")
-    return redirect('signup')
+    return render(request, 'flipkart_tracker/signup.html')
 
 def searchMatch(query, item):
     if query in item.name:
