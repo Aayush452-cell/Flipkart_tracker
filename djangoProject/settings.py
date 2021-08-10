@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-v_vc**z-qjyw6d6mh%1k@xv8-ugegy58ppk78d+=g@6-vb$@9^
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['flipkart-price-tracking.herokuapp.com']
 
 
 # Application definition
