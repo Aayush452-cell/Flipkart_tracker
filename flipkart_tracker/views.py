@@ -159,14 +159,14 @@ def searchMatch(query, item):
 def search(request):
     query = request.GET['query']
     prodst = Link.objects.filter(user=request.user)
-        items_no = prodst.count()
-        no_discounted = 0
-        if items_no > 0:
-            discount_list = []
-            for item in prodst:
-                if item.old_price > item.current_price:
-                    discount_list.append(item)
-            no_discounted = len(discount_list)
+    items_no = prodst.count()
+    no_discounted = 0
+    if items_no > 0:
+        discount_list = []
+        for item in prods:
+            if item.old_price > item.current_price:
+                discount_list.append(item)
+        no_discounted = len(discount_list)
     prods = []
     allprods = Link.objects.filter(user=request.user)
     for item in allprods:
