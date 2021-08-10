@@ -15,7 +15,7 @@ def sendmail(item):
     server.starttls()
     server.ehlo()
 
-    server.login('aayushiiitcse1@gmail.com', 'Aayush@567')
+    server.login('@gmail.com', '')
 
     url = ""
     subject = 'Hey! Price fell down of the ' + item.name + 'on Flipkart'
@@ -25,7 +25,7 @@ def sendmail(item):
 
     user =item.user
     user_mail = User.objects.get(username=user).email
-    server.sendmail('aayushiiitcse1@gmail.com', user_mail , msg)
+    server.sendmail('@gmail.com', user_mail , msg)
 
     print('Email Sent')
 
