@@ -167,11 +167,6 @@ def search(request):
                 if item.old_price > item.current_price:
                     discount_list.append(item)
             no_discounted = len(discount_list)
-        context = {
-            'prods':prods,
-            'items_no':items_no,
-            'no_discounted':no_discounted,
-        }
     prods = []
     allprods = Link.objects.filter(user=request.user)
     for item in allprods:
