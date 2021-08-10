@@ -163,7 +163,7 @@ def search(request):
     no_discounted = 0
     if items_no > 0:
         discount_list = []
-        for item in prods:
+        for item in prodst:
             if item.old_price > item.current_price:
                 discount_list.append(item)
         no_discounted = len(discount_list)
