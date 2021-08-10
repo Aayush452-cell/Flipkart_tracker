@@ -21,4 +21,4 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('flipkart_tracker/', include('flipkart_tracker.urls')),
     path('',Home.as_view(), name='home'),
-]
+]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
