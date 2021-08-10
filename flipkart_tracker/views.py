@@ -158,6 +158,20 @@ def searchMatch(query, item):
 
 def search(request):
     query = request.GET['query']
+    prodst = Link.objects.filter(user=request.user)
+        items_no = prodst.count()
+        no_discounted = 0
+        if items_no > 0:
+            discount_list = []
+            for item in prodst:
+                if item.old_price > item.current_price:
+                    discount_list.append(item)
+            no_discounted = len(discount_list)
+        context = {
+            'prods':prods,
+            'items_no':items_no,
+            'no_discounted':no_discounted,
+        }
     prods = []
     allprods = Link.objects.filter(user=request.user)
     for item in allprods:
@@ -167,5 +181,7 @@ def search(request):
     context = {
         'prods': prods,
         'query': query,
+        'items_no':items_no,
+        'no_discounted':no_discounted,
     }
     return render(request, 'flipkart_tracker/search.html', context)
