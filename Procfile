@@ -1,1 +1,1 @@
-web: gunicorn flipkart_tracker.wsgi
+web: gunicorn djangoProject.wsgi
